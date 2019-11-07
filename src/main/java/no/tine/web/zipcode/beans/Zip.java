@@ -33,5 +33,4 @@ public class Zip {
 
 	private transient String json;
 
-
 }
