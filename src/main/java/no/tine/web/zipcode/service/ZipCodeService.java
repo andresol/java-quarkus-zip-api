@@ -34,7 +34,9 @@ public class ZipCodeService {
     public Stream<Zip> getZipFromIds(@NonNull final Collection<Integer> ids) {
         return ids.parallelStream()
                 .map(this.handler::getZip)
-                .flatMap(Optional::stream);
+                .filter(Optional::isPresent)
+                .map(Optional::get);
+                //.flatMap(Optional::stream);
     }
 
     public Optional<Zip> getZip(int zip) {
